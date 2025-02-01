@@ -39,7 +39,7 @@ npm install
 ### 3️⃣ Set up environment variables
 Create a .env file in the root directory with the following variables:
 ```ini
-MONGODB_URI=mongodb://mongo:27017/property-manager
+MONGODB_URI=mongodb://root:covertree@localhost:27017/property-manager?authSource=admin
 WEATHERAPI_API_KEY=your_weatherapi_key_here
 NODE_ENV=development
 ```
