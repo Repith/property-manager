@@ -1,15 +1,19 @@
 services:
-  api:
+  client:
     build: .
     ports:
       - "4000:4000"
     environment:
       - NODE_ENV=development
       - MONGODB_URI=mongodb://root:covertree@mongo:27017/property-manager?authSource=admin
-      - WEATHERAPI_API_KEY='b0f83a743f17419e91d170346250102'
+      - WEATHERAPI_API_KEY=b0f83a743f17419e91d170346250102
     depends_on:
       mongo:
         condition: service_healthy
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: sh -c "npm run seed && npm run start"
 
   mongo:
     image: mongo:7
@@ -23,9 +27,6 @@ services:
       - mongo_data:/data/db
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongosh --quiet
-      interval: 5s
-      timeout: 5s
-      retries: 5
 
 volumes:
   mongo_data:

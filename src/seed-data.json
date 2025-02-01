@@ -1,0 +1,152 @@
+[
+  {
+    "city": "Fountain Hills",
+    "street": "15528 E Golden Eagle Blvd",
+    "state": "AZ",
+    "zipCode": "85268"
+  },
+  {
+    "city": "Phoenix",
+    "street": "1234 Main St",
+    "state": "AZ",
+    "zipCode": "85001"
+  },
+  {
+    "city": "Scottsdale",
+    "street": "5678 North Rd",
+    "state": "AZ",
+    "zipCode": "85251"
+  },
+  {
+    "city": "Tucson",
+    "street": "9876 South St",
+    "state": "AZ",
+    "zipCode": "85701"
+  },
+  {
+    "city": "Mesa",
+    "street": "4567 East Ave",
+    "state": "AZ",
+    "zipCode": "85201"
+  },
+  {
+    "city": "Chandler",
+    "street": "789 West Blvd",
+    "state": "AZ",
+    "zipCode": "85225"
+  },
+  {
+    "city": "Glendale",
+    "street": "6543 Sunset Blvd",
+    "state": "AZ",
+    "zipCode": "85301"
+  },
+  {
+    "city": "Tempe",
+    "street": "321 Sunrise Ave",
+    "state": "AZ",
+    "zipCode": "85281"
+  },
+  {
+    "city": "Gilbert",
+    "street": "123 Liberty St",
+    "state": "AZ",
+    "zipCode": "85234"
+  },
+  {
+    "city": "Peoria",
+    "street": "987 Freedom Rd",
+    "state": "AZ",
+    "zipCode": "85345"
+  },
+  {
+    "city": "Flagstaff",
+    "street": "876 Pine Ave",
+    "state": "AZ",
+    "zipCode": "86001"
+  },
+  {
+    "city": "Sedona",
+    "street": "765 Oak Creek Dr",
+    "state": "AZ",
+    "zipCode": "86336"
+  },
+  {
+    "city": "Prescott",
+    "street": "543 Mountain Rd",
+    "state": "AZ",
+    "zipCode": "86301"
+  },
+  {
+    "city": "Yuma",
+    "street": "432 Desert Ave",
+    "state": "AZ",
+    "zipCode": "85364"
+  },
+  {
+    "city": "Kingman",
+    "street": "678 Mojave St",
+    "state": "AZ",
+    "zipCode": "86401"
+  },
+  {
+    "city": "Lake Havasu City",
+    "street": "987 Water Dr",
+    "state": "AZ",
+    "zipCode": "86403"
+  },
+  {
+    "city": "Page",
+    "street": "654 Canyon Blvd",
+    "state": "AZ",
+    "zipCode": "86040"
+  },
+  {
+    "city": "Show Low",
+    "street": "432 White Mountain Rd",
+    "state": "AZ",
+    "zipCode": "85901"
+  },
+  {
+    "city": "Bisbee",
+    "street": "321 Copper St",
+    "state": "AZ",
+    "zipCode": "85603"
+  },
+  {
+    "city": "Payson",
+    "street": "876 Rim Dr",
+    "state": "AZ",
+    "zipCode": "85541"
+  },
+  {
+    "city": "Holbrook",
+    "street": "543 Navajo Blvd",
+    "state": "AZ",
+    "zipCode": "86025"
+  },
+  {
+    "city": "Winslow",
+    "street": "123 Route 66",
+    "state": "AZ",
+    "zipCode": "86047"
+  },
+  {
+    "city": "Globe",
+    "street": "987 Gila St",
+    "state": "AZ",
+    "zipCode": "85501"
+  },
+  {
+    "city": "Eagar",
+    "street": "765 Apache Rd",
+    "state": "AZ",
+    "zipCode": "85925"
+  },
+  {
+    "city": "Snowflake",
+    "street": "432 Pioneer Blvd",
+    "state": "AZ",
+    "zipCode": "85937"
+  }
+]
