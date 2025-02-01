@@ -2,12 +2,8 @@ import { connect, model, Schema } from 'mongoose';
 import * as fs from 'fs';
 import * as path from 'path';
 import axios from 'axios';
-import {
-  WeatherApiResponse,
-  WeatherData,
-} from 'src/properties/interfaces/weather-api.interface';
+import { WeatherApiResponse } from 'src/properties/interfaces/weather-api.interface';
 
-// Definicja schematu Mongoose
 const PropertySchema = new Schema(
   {
     city: { type: String, required: true },
@@ -38,26 +34,26 @@ function parseJSON<T>(filePath: string): T {
   try {
     return JSON.parse(content) as T;
   } catch {
-    throw new Error(`Błąd podczas parsowania JSON z pliku: ${filePath}`);
+    throw new Error(`Error parsin JSON from file: ${filePath}`);
   }
 }
 
 async function fetchWeather(
   city: string,
   state: string,
-): Promise<WeatherData | undefined> {
+): Promise<WeatherApiResponse | undefined> {
   const apiKey = process.env.WEATHERAPI_API_KEY;
   const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${encodeURIComponent(
     `${city},${state}`,
   )}`;
   const response = await axios.get<WeatherApiResponse>(url);
-  return response.data.current;
+  return response.data;
 }
 
 async function seed() {
   const mongoUri = process.env.MONGODB_URI || '';
   await connect(mongoUri);
-  console.log('Połączono z bazą danych.');
+  console.log('Connected to MongoDB.');
 
   const seedFilePath = path.join(__dirname, '../seed-data.json');
   const seedData: PropertyType[] = parseJSON<PropertyType[]>(seedFilePath);
@@ -65,12 +61,17 @@ async function seed() {
   const toInsert: PropertyType[] = [];
 
   for (const property of seedData) {
-    const weatherData = await fetchWeather(property.city, property.state);
-    toInsert.push({ ...property, weatherData });
+    const data = await fetchWeather(property.city, property.state);
+    toInsert.push({
+      ...property,
+      lat: data?.location?.lat,
+      long: data?.location?.lon,
+      weatherData: data?.current,
+    });
   }
 
   await Property.insertMany(toInsert);
-  console.log(`Dodano ${seedData.length} rekordów.`);
+  console.log(`Added ${seedData.length} properties.`);
   process.exit(0);
 }
 
