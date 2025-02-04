@@ -1,4 +1,3 @@
-// src/properties/dto/property-filter.input.ts
 import { InputType, Field, registerEnumType } from '@nestjs/graphql';
 import { IsOptional, IsString } from 'class-validator';
 
