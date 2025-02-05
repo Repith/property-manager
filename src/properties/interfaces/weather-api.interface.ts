@@ -1,5 +1,7 @@
+import { Field, ObjectType } from '@nestjs/graphql';
+
 export interface WeatherApiResponse {
-  location?: {
+  location: {
     name: string;
     region: string;
     country: string;
@@ -7,22 +9,50 @@ export interface WeatherApiResponse {
     lon: number;
     localtime: string;
   };
-  current?: WeatherData;
+  current: WeatherData;
 }
 
-export interface WeatherData {
-  temp_c: number;
-  temp_f: number;
-  is_day: number;
-  condition: {
-    text: string;
-    icon: string;
-    code: number;
-  };
-  wind_kph: number;
-  wind_dir: string;
-  humidity: number;
-  cloud: number;
-  feelslike_c: number;
-  uv: number;
+@ObjectType()
+export class WeatherCondition {
+  @Field()
+  text!: string;
+
+  @Field()
+  icon!: string;
+
+  @Field()
+  code!: number;
+}
+
+@ObjectType()
+export class WeatherData {
+  @Field()
+  temp_c!: number;
+
+  @Field()
+  temp_f!: number;
+
+  @Field()
+  is_day!: number;
+
+  @Field(() => WeatherCondition)
+  condition!: WeatherCondition;
+
+  @Field()
+  wind_kph!: number;
+
+  @Field()
+  wind_dir!: string;
+
+  @Field()
+  humidity!: number;
+
+  @Field()
+  cloud!: number;
+
+  @Field()
+  feelslike_c!: number;
+
+  @Field()
+  uv!: number;
 }

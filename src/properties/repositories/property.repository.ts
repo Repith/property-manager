@@ -5,10 +5,13 @@ import { Property, PropertyDocument } from '../entities/property.entity';
 
 @Injectable()
 export class PropertyRepository {
+  private readonly propertyModel: Model<PropertyDocument>;
   constructor(
     @InjectModel(Property.name)
-    private readonly propertyModel: Model<PropertyDocument>,
-  ) {}
+    propertyModel: Model<PropertyDocument>,
+  ) {
+    this.propertyModel = propertyModel;
+  }
 
   async create(data: Partial<Property>): Promise<Property> {
     const created = new this.propertyModel(data);

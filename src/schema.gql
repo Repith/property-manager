@@ -3,21 +3,16 @@
 # ------------------------------------------------------
 
 input CreatePropertyInput {
-  city: String! = ""
-  state: String! = ""
-  street: String! = ""
-  zipCode: String! = ""
+  city: String!
+  state: String!
+  street: String!
+  zipCode: String!
 }
 
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
-
-"""
-The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-"""
-scalar JSON
 
 type Mutation {
   createProperty(input: CreatePropertyInput!): Property!
@@ -27,15 +22,15 @@ type Mutation {
 type Property {
   _id: ID!
   city: String!
-  createdAt: DateTime
+  createdAt: DateTime!
   lat: Float
   long: Float
   state: String!
   street: String!
-  updatedAt: DateTime
+  updatedAt: DateTime!
 
   """Weather data stored as JSON"""
-  weatherData: JSON
+  weatherData: WeatherData
   zipCode: String!
 }
 
@@ -57,4 +52,23 @@ type Query {
 enum SortOrderEnum {
   ASC
   DESC
+}
+
+type WeatherCondition {
+  code: Float!
+  icon: String!
+  text: String!
+}
+
+type WeatherData {
+  cloud: Float!
+  condition: WeatherCondition!
+  feelslike_c: Float!
+  humidity: Float!
+  is_day: Float!
+  temp_c: Float!
+  temp_f: Float!
+  uv: Float!
+  wind_dir: String!
+  wind_kph: Float!
 }

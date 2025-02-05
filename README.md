@@ -98,7 +98,13 @@ Once the application is running, you can access the GraphQL Playground at:
        city
        state
        zipCode
-       weatherData
+        weatherData {
+        temp_c
+        wind_kph
+        condition {
+          text
+        }
+        }
        createdAt
      }
    }
@@ -135,7 +141,24 @@ query GetProperty($id: String!) {
   property(id: $id) {
     _id
     city
-    weatherData
+    state
+    zipCode
+    createdAt
+    weatherData {
+        temp_c
+        temp_f
+        is_day
+        condition{
+          text
+          icon
+        }
+        wind_kph
+        wind_dir
+        humidity
+        cloud
+        feelslike_c
+        uv
+       }
   }
 }
 ```
@@ -144,9 +167,9 @@ query GetProperty($id: String!) {
 ```graphql
 mutation CreateProperty($input: CreatePropertyInput!) {
   createProperty(input: $input) {
-    _id
     city
-    weatherData
+    state
+    zipCode
   }
 }
 ```

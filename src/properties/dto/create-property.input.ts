@@ -6,20 +6,20 @@ export class CreatePropertyInput {
   @Field()
   @IsString()
   @IsNotEmpty()
-  city: string = '';
+  city!: string;
 
   @Field()
   @IsString()
   @IsNotEmpty()
-  street: string = '';
+  street!: string;
 
   @Field()
   @IsString()
   @IsNotEmpty()
   @Length(2, 2)
-  state: string = '';
+  state!: string;
 
   @Field()
   @IsPostalCode('US')
-  zipCode: string = '';
+  zipCode!: string;
 }

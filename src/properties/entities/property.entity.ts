@@ -1,7 +1,7 @@
 import { ObjectType, Field, ID } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import GraphQLJSON from 'graphql-type-json';
 import { HydratedDocument } from 'mongoose';
+import { WeatherData } from '../interfaces/weather-api.interface';
 
 export type PropertyDocument = HydratedDocument<Property>;
 
@@ -9,23 +9,23 @@ export type PropertyDocument = HydratedDocument<Property>;
 @Schema({ timestamps: true })
 export class Property {
   @Field(() => ID)
-  _id: string = '';
+  _id!: string;
 
   @Field()
   @Prop({ required: true })
-  city: string = '';
+  city!: string;
 
   @Field()
   @Prop({ required: true })
-  street: string = '';
+  street!: string;
 
   @Field()
   @Prop({ required: true })
-  state: string = '';
+  state!: string;
 
   @Field()
   @Prop({ required: true })
-  zipCode: string = '';
+  zipCode!: string;
 
   @Field({ nullable: true })
   @Prop()
@@ -35,18 +35,18 @@ export class Property {
   @Prop()
   long?: number;
 
-  @Field(() => GraphQLJSON, {
+  @Field({
     nullable: true,
     description: 'Weather data stored as JSON',
   })
   @Prop({ type: Object })
-  weatherData?: any;
+  weatherData!: WeatherData;
 
-  @Field({ nullable: true })
-  createdAt?: Date;
+  @Field()
+  createdAt!: Date;
 
-  @Field({ nullable: true })
-  updatedAt?: Date;
+  @Field()
+  updatedAt!: Date;
 }
 
 export const PropertySchema = SchemaFactory.createForClass(Property);
